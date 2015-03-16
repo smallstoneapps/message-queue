@@ -1,4 +1,4 @@
-# Message Queue
+# MessageQueue for Pebble
 
 ## Setup the message queue
 
