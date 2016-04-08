@@ -1,13 +1,14 @@
 {
   "name": "pebble-message-queue",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "",
   "main": "src/c/message-queue.c",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "make"
+    "test": "make",
+    "prepublish": "pwaf distclean configure build"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,11 @@
       "aplite",
       "basalt",
       "chalk"
+    ],
+    "appKeys": [
+      "group",
+      "operation",
+      "data"
     ]
   },
   "files": [

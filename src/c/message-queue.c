@@ -1,6 +1,6 @@
 /*
 
-MessageQueue Library for Pebble apps v2.0.0
+MessageQueue Library for Pebble apps v2.0.2
 
 ----------------------
 
@@ -34,10 +34,7 @@ message-queue.c
 
 #include <pebble.h>
 #include "message-queue.h"
-
-#define KEY_GROUP 0
-#define KEY_OPERATION 1
-#define KEY_DATA 2
+#include "message_keys.h"
 
 #define ATTEMPT_COUNT 2
 
@@ -159,9 +156,9 @@ static void outbox_failed_callback(DictionaryIterator *iterator, AppMessageResul
 }
 
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
-  char* group = dict_find(iterator, KEY_GROUP)->value->cstring;
-  char* operation = dict_find(iterator, KEY_OPERATION)->value->cstring;
-  char* data = dict_find(iterator, KEY_DATA)->value->cstring;
+  char* group = dict_find(iterator, GROUP_KEY)->value->cstring;
+  char* operation = dict_find(iterator, OPERATION_KEY)->value->cstring;
+  char* data = dict_find(iterator, DATA_KEY)->value->cstring;
 
   HandlerQueue* hq = handler_queue;
   while (hq != NULL) {
@@ -170,7 +167,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
     }
     hq = hq->next;
   }
-  
+
   if (! can_send && s_autostart) {
     mqueue_enable_sending();
   }
@@ -211,9 +208,9 @@ static void send_next_message() {
 
   DictionaryIterator* dict;
   app_message_outbox_begin(&dict);
-  dict_write_cstring(dict, KEY_GROUP, mq->message->group);
-  dict_write_cstring(dict, KEY_DATA, mq->message->data);
-  dict_write_cstring(dict, KEY_OPERATION, mq->message->operation);
+  dict_write_cstring(dict, GROUP_KEY, mq->message->group);
+  dict_write_cstring(dict, DATA_KEY, mq->message->data);
+  dict_write_cstring(dict, OPERATION_KEY, mq->message->operation);
   AppMessageResult result = app_message_outbox_send();
   APP_LOG(APP_LOG_LEVEL_DEBUG, "%s", translate_error(result));
   mq->attempts_left -= 1;
