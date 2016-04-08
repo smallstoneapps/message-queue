@@ -1,0 +1,35 @@
+{
+  "name": "pebble-message-queue",
+  "version": "2.0.0",
+  "description": "",
+  "main": "src/c/message-queue.c",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smallstoneapps/message-queue.git"
+  },
+  "author": "Matthew Tole <pebble@matthewtole.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smallstoneapps/message-queue/issues"
+  },
+  "homepage": "https://github.com/smallstoneapps/message-queue#readme",
+  "pebble": {
+    "uuid": "0590bb20-a457-455b-9d3f-f65f54aa6245",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "aplite",
+      "basalt",
+      "chalk"
+    ]
+  },
+  "files": [
+    "dist.zip"
+  ]
+}
