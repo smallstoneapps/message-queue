@@ -1,6 +1,6 @@
 {
   "name": "pebble-message-queue",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "main": "src/c/message-queue.c",
   "directories": {

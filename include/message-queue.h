@@ -34,6 +34,8 @@ message-queue.h
 
 #pragma once
 
+#include <pebble.h>
+
 typedef void (*MessageHandler)(char* operation, char* data);
 
 void mqueue_init(bool autostart);
