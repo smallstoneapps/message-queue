@@ -1,15 +1,8 @@
 {
   "name": "pebble-message-queue",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "",
   "main": "src/c/message-queue.c",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "make",
-    "prepublish": "pwaf distclean configure build"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smallstoneapps/message-queue.git"
@@ -21,7 +14,6 @@
   },
   "homepage": "https://github.com/smallstoneapps/message-queue#readme",
   "pebble": {
-    "uuid": "0590bb20-a457-455b-9d3f-f65f54aa6245",
     "sdkVersion": "3",
     "enableMultiJS": true,
     "targetPlatforms": [
