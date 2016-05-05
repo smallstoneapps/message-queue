@@ -72,7 +72,11 @@ static bool can_send = false;
 static bool s_autostart = false;
 
 void mqueue_init(bool autostart) {
-  AppMessageResult result = app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
+  mqueue_init_custom(autostart, app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
+}
+
+void mqueue_init_custom(bool autostart, uint16_t inbox_size, uint16_t outbox_size) {
+  AppMessageResult result = app_message_open(inbox_size, outbox_size);
   if (APP_MSG_OK != result) {
     APP_LOG(APP_LOG_LEVEL_DEBUG, "INIT ERROR: %s", translate_error(result));
   }
