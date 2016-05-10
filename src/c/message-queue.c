@@ -1,42 +1,10 @@
-/*
-
-MessageQueue Library for Pebble apps v2.0.2
-
-----------------------
-
-The MIT License (MIT)
-
-Copyright © 2013 - 2015 Matthew Tole
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
---------------------
-
-message-queue.c
-
-*/
-
 #include <pebble.h>
 #include "message-queue.h"
 #include "message_keys.h"
 
+
 #define ATTEMPT_COUNT 2
+
 
 typedef struct {
   char* group;
@@ -58,6 +26,7 @@ struct HandlerQueue {
   HandlerQueue* next;
 };
 
+
 static void destroy_message_queue(MessageQueue* queue);
 static void outbox_sent_callback(DictionaryIterator *iterator, void *context);
 static void outbox_failed_callback(DictionaryIterator *iterator, AppMessageResult reason, void *context);
@@ -65,11 +34,13 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
 static void send_next_message();
 static char *translate_error(AppMessageResult result);
 
+
 static MessageQueue* msg_queue = NULL;
 static HandlerQueue* handler_queue = NULL;
 static bool sending = false;
 static bool can_send = false;
 static bool s_autostart = false;
+
 
 void mqueue_init(bool autostart) {
   mqueue_init_custom(autostart, app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
@@ -141,7 +112,6 @@ void mqueue_enable_sending(void) {
   send_next_message();
 }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
 static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
   sending = false;
