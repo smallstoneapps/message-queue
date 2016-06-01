@@ -1,6 +1,6 @@
 {
   "name": "@smallstoneapps/message-queue",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "",
   "main": "src/c/message-queue.c",
   "repository": {
@@ -14,10 +14,10 @@
   },
   "homepage": "https://github.com/smallstoneapps/message-queue#readme",
   "pebble": {
+    "projectType": "package",
     "sdkVersion": "3",
     "enableMultiJS": true,
     "targetPlatforms": [
-      "aplite",
       "basalt",
       "chalk"
     ],

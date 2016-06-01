@@ -1,6 +1,5 @@
 #include <pebble.h>
 #include "message-queue.h"
-#include "message_keys.h"
 
 
 #define ATTEMPT_COUNT 2
