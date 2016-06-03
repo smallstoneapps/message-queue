@@ -1,6 +1,6 @@
 {
   "name": "@smallstoneapps/message-queue",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "",
   "main": "src/c/message-queue.c",
   "repository": {

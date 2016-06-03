@@ -62,11 +62,11 @@ bool mqueue_add(char* group, char* operation, char* data) {
   mq->attempts_left = ATTEMPT_COUNT;
 
   mq->message = malloc(sizeof(Message));
-  mq->message->group = malloc(strlen(group));
+  mq->message->group = malloc(strlen(group) + 1);
   strcpy(mq->message->group, group);
-  mq->message->operation = malloc(strlen(operation));
+  mq->message->operation = malloc(strlen(operation) + 1);
   strcpy(mq->message->operation, operation);
-  mq->message->data = malloc(strlen(data));
+  mq->message->data = malloc(strlen(data) + 1);
   strcpy(mq->message->data, data);
 
   APP_LOG(APP_LOG_LEVEL_DEBUG, "ADDING: %s, %s, %s", mq->message->group, mq->message->operation, mq->message->data);
@@ -90,7 +90,7 @@ bool mqueue_add(char* group, char* operation, char* data) {
 void mqueue_register_handler(char* group, MessageHandler handler) {
   HandlerQueue* hq = malloc(sizeof(HandlerQueue));
   hq->next = NULL;
-  hq->group = malloc(strlen(group));
+  hq->group = malloc(strlen(group) + 1);
   strcpy(hq->group, group);
   hq->handler = handler;
 
