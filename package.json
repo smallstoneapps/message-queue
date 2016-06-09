@@ -1,6 +1,6 @@
 {
   "name": "@smallstoneapps/message-queue",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "",
   "main": "src/c/message-queue.c",
   "repository": {
@@ -23,9 +23,9 @@
       "chalk"
     ],
     "messageKeys": [
-      "group",
-      "operation",
-      "data"
+      "GROUP",
+      "OPERATION",
+      "DATA"
     ]
   },
   "files": [
