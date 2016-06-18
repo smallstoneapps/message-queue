@@ -1,6 +1,6 @@
 {
   "name": "@smallstoneapps/message-queue",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "",
   "main": "src/c/message-queue.c",
   "repository": {
@@ -20,7 +20,8 @@
     "targetPlatforms": [
       "aplite",
       "basalt",
-      "chalk"
+      "chalk",
+      "diorite"
     ],
     "messageKeys": [
       "GROUP",
